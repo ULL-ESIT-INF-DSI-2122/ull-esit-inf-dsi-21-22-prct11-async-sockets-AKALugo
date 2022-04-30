@@ -1,4 +1,5 @@
 import * as net from "net";
+import {Nota} from "../notas/nota";
 import {ResponseType, RequestType} from "../peticiones";
 const chalk = require("chalk");
 
@@ -24,20 +25,23 @@ export class Cliente {
           if (respuesta.success) {
             console.log(chalk.green("¡Nota eliminada!"));
           } else if (respuesta.notes) {
-            console.log(chalk.red(`¡ERROR, no se ha encontrado la nota ${respuesta.notes[0].getTitulo()}!`));
+            const notaObjeto = new Nota(respuesta.notes[0].titulo, respuesta.notes[0].cuerpo, respuesta.notes[0].color);
+            console.log(chalk.red(`¡ERROR, no se ha encontrado la nota ${notaObjeto.getTitulo()}!`));
           }
           break;
         case "modify":
           if (respuesta.success) {
             console.log(chalk.green("¡Nota modificada!"));
           } else if (respuesta.notes) {
-            console.log(chalk.red(`¡ERROR, no se ha encontrado la nota ${respuesta.notes[0].getTitulo()}!`));
+            const notaObjeto = new Nota(respuesta.notes[0].titulo, respuesta.notes[0].cuerpo, respuesta.notes[0].color);
+            console.log(chalk.red(`¡ERROR, no se ha encontrado la nota ${notaObjeto.getTitulo()}!`));
           }
           break;
         case "list":
           if (respuesta.notes) {
             respuesta.notes.forEach((nota) => {
-              console.log(chalk.keyword(nota.getColor())(nota.getTitulo()));
+              const notaObjeto = new Nota(nota.titulo, nota.cuerpo, nota.color);
+              console.log(chalk.keyword(notaObjeto.getColor())(notaObjeto.getTitulo()));
             });
           } else {
             console.log(chalk.red("¡ERROR, hubo un problema con el nombre del usuario o el usuario no tiene notas!"));
@@ -45,11 +49,14 @@ export class Cliente {
           break;
         case "read":
           if (respuesta.notes) {
-            console.log(chalk.keyword(respuesta.notes[0].getColor())(respuesta.notes[0].getTitulo()));
-            console.log(chalk.keyword(respuesta.notes[0].getColor())(respuesta.notes[0].getCuerpo()));
+            const notaObjeto = new Nota(respuesta.notes[0].titulo, respuesta.notes[0].cuerpo, respuesta.notes[0].color);
+            console.log(chalk.keyword(notaObjeto.getColor())(notaObjeto.getTitulo()));
+            console.log(chalk.keyword(notaObjeto.getColor())(notaObjeto.getCuerpo()));
           }
           break;
       }
+
+      cliente.end();
     });
     cliente.write(JSON.stringify(peticion) + "\n", (err) => {
       if (err) {

@@ -14,7 +14,7 @@ export class Nota {
     * @param cuerpo cuerpo de la nota
     * @param color color de la nota
     */
-  constructor(private titulo: string, private cuerpo: string, private color: colorType) {}
+  constructor(public titulo: string, public cuerpo: string, public color: colorType) {}
  
   /**
     * Getter

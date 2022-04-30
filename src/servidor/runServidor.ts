@@ -5,7 +5,7 @@ import {GestionNota} from "../notas/gestionNota";
 
 export class Servidor {
   private manejador = new GestionNota();
-  constructor(private readonly port: number) {}
+  constructor(private readonly puerto: number) {}
 
   run() {
     net.createServer((connection) => {
@@ -53,8 +53,8 @@ export class Servidor {
           if (err) console.log("Hubo un problema al enviar la respuesta");
         });
       });
-    }).listen(60300, () => {
-      console.log('Waiting for clients to connect.');
+    }).listen(this.puerto, () => {
+      console.log(`Servidor escuchando en el puerto ${this.puerto}`);
     });
   }
 }

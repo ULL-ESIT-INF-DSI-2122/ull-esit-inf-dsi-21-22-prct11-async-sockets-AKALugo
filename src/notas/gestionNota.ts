@@ -29,10 +29,10 @@ export class GestionNota {
       const impNota = new JSONNota(new Nota(titulo, cuerpo, color));
       fs.writeFileSync(`database/${usuario}/${titulo}.json`, impNota.json());
 
-      console.log(chalk.green("¡Nueva nota añadida!"));
+      console.log(chalk.green(`¡Se ha añadido la nota ${titulo} al usuario ${usuario}!`));
       return true;
     } else {
-      console.log(chalk.red("¡ERROR, ya existe una nota con ese título!"));
+      console.log(chalk.red(`¡ERROR, ya existe la nota ${titulo} para el usuario ${usuario}!`));
       return false;
     }
   }
@@ -46,11 +46,11 @@ export class GestionNota {
   eliminarNota(usuario: string, titulo: string): boolean {
     if (fs.existsSync(`database/${usuario}/${titulo}.json`)) {
       fs.rmSync(`database/${usuario}/${titulo}.json`);
-      console.log(chalk.green("¡Nota eliminada!"));
+      console.log(chalk.green(`¡Se ha eliminado la nota ${titulo} para el usuario ${usuario}!!`));
 
       return true;
     } else {
-      console.log(chalk.red(`¡ERROR, no se ha encontrado la nota ${titulo} para el usuario ${usuario}!`));
+      console.log(chalk.red(`¡ERROR, no se ha podido eliminar la nota ${titulo} para el usuario ${usuario}!`));
 
       return false;
     }
@@ -69,11 +69,11 @@ export class GestionNota {
       const impNota = new JSONNota(new Nota(titulo, cuerpo, color));
 
       fs.writeFileSync(`database/${usuario}/${titulo}.json`, impNota.json());
-      console.log(chalk.green("¡Nota modificada!"));
+      console.log(chalk.green(`¡Se ha modificado la nota ${titulo} para el usuario ${usuario}!!`));
 
       return true;
     } else {
-      console.log(chalk.red(`¡ERROR, no se ha encontrado la nota ${titulo} para el usuario ${usuario}!`));
+      console.log(chalk.red(`¡ERROR, no se ha podido modificar la nota ${titulo} para el usuario ${usuario}!`));
       return false;
     }
   }
@@ -94,9 +94,10 @@ export class GestionNota {
         auxNotas.push(nota);
       });
 
+      console.log(chalk.green(`¡Listando notas para el usuario ${usuario}!`));
       return {exito: true, notas: auxNotas};
     } else {
-      console.log(chalk.red("¡ERROR, hubo un problema con el nombre del usuario o el usuario no tiene notas!"));
+      console.log(chalk.red(`¡ERROR, no se ha podido listar las notas del usuario ${usuario}!`));
       return {exito: false, notas: []};
     }
   }
@@ -116,9 +117,10 @@ export class GestionNota {
       console.log(chalk.keyword(nota.getColor())(nota.getTitulo()));
       console.log(chalk.keyword(nota.getColor())(nota.getCuerpo()));
 
+      console.log(chalk.green(`¡Mostrando la nota ${titulo} para el usuario ${usuario}!`));
       return {exito: true, nota: [nota]};
     } else {
-      console.log(chalk.red("¡ERROR, no se ha encontrado la nota!"));
+      console.log(chalk.red(`¡ERROR, no se ha encontrado la nota ${titulo} para el usuario ${usuario}!`));
       return {exito: false, nota: []};
     }
   }
