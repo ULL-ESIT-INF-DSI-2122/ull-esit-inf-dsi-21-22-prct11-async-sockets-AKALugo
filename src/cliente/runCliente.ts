@@ -38,7 +38,7 @@ yargs.command({
         typeof argv.body === 'string' && typeof argv.color === 'string' && 
         (argv.color === 'red' || argv.color === 'green' || argv.color === 'blue'||
         argv.color === 'yellow')) {
-      cliente.run({type: "add", user: argv.user, title: argv.title, body: argv.color, color: argv.color});
+      cliente.run({type: "add", user: argv.user, title: argv.title, body: argv.body, color: argv.color});
     } else {
       console.log(chalk.red('Argumentos invalidos, reviselos y vuelva a intentarlo'));
     }
@@ -78,7 +78,7 @@ yargs.command({
         typeof argv.body === 'string' && typeof argv.color === 'string' && 
         (argv.color === 'red' || argv.color === 'green' || argv.color === 'blue'||
         argv.color === 'yellow')) {
-      cliente.run({type: "modify", user: argv.user, title: argv.title, body: argv.color, color: argv.color});
+      cliente.run({type: "modify", user: argv.user, title: argv.title, body: argv.body, color: argv.color});
     } else {
       console.log(chalk.red('Argumentos invalidos, reviselos y vuelva a intentarlo'));
     }

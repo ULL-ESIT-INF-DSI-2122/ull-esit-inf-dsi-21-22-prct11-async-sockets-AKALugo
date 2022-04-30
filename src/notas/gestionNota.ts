@@ -113,9 +113,6 @@ export class GestionNota {
       const informacionNota = fs.readFileSync(`database/${usuario}/${titulo}.json`);
       const jsonNota = JSON.parse(informacionNota.toString());
       const nota = new Nota(jsonNota.titulo, jsonNota.cuerpo, jsonNota.color);
-      
-      console.log(chalk.keyword(nota.getColor())(nota.getTitulo()));
-      console.log(chalk.keyword(nota.getColor())(nota.getCuerpo()));
 
       console.log(chalk.green(`¡Mostrando la nota ${titulo} para el usuario ${usuario}!`));
       return {exito: true, nota: [nota]};
