@@ -1,7 +1,14 @@
 import {EventEmitter} from "events";
 import {RequestType} from "../peticiones";
 
+/**
+ * @class EventEmitterServidor
+ */
 export class EventEmitterServidor extends EventEmitter {
+  /**
+   * Constructor
+   * @param connection Objeto eventEmiter para poder actuar segun el evento recibido.
+   */
   constructor(connection: EventEmitter) {
     super();
 

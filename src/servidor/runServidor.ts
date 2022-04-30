@@ -3,10 +3,20 @@ import {ResponseType, RequestType} from "../peticiones";
 import {EventEmitterServidor} from "./eventEmitterServidor";
 import {GestionNota} from "../notas/gestionNota";
 
+/**
+ * @class Servidor
+ */
 export class Servidor {
   private manejador = new GestionNota();
+  /**
+   * Constructor
+   * @param puerto puerto de escucha
+   */
   constructor(private readonly puerto: number) {}
 
+  /**
+   * Método que pone al servidor a escuchar en un puerto y a recibir peticiones-
+   */
   run() {
     net.createServer((connection) => {
       const emitter = new EventEmitterServidor(connection);

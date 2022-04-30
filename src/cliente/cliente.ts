@@ -1,13 +1,23 @@
 import * as net from "net";
 import {Nota} from "../notas/nota";
 import {ResponseType, RequestType} from "../peticiones";
+import {EventEmitterCliente} from "./eventEmitterCliente";
 const chalk = require("chalk");
 
-import EventEmitterCliente from "./eventEmitterCliente";
-
+/**
+ * @class Cliente
+ */
 export class Cliente {
+  /**
+   * Constructor
+   * @param puerto puerto por el cual comunicarse con el servidor.
+   */
   constructor(private readonly puerto: number) {}
 
+  /**
+   * Constructor
+   * @param peticion Peticion a realizar al servidor
+   */
   run(peticion: RequestType) {
     const cliente = net.connect({port: this.puerto});
     const emitter = new EventEmitterCliente(cliente);
