@@ -20,3 +20,19 @@ export type ResponseType = {
     success: boolean;
     notes?: Nota[];
   }
+
+/**
+ * @type ModificacionServidorType
+ */
+export type ModificacionServidorType = {
+  comando: string;
+  opciones: string[];
+  ruta: string;
+}
+
+/**
+ * @type ModificacionClienteType
+ */
+export type ModificacionClienteType = {
+  resultado: string;
+}
