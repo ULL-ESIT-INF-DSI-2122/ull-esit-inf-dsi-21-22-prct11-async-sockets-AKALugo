@@ -14,6 +14,7 @@ export class Cliente {
   constructor(private readonly puerto: number) {}
 
   /**
+   * 
    * Metodo que ejecuta al cliente.
    * @param peticion Peticion a realizar al servidor
    */
