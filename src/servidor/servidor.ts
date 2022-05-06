@@ -61,6 +61,7 @@ export class Servidor {
         
         connection.write(JSON.stringify(respuesta) + "\n", (err) => {
           if (err) console.log("Hubo un problema al enviar la respuesta");
+          connection.end();
         });
       });
     }).listen(this.puerto, () => {

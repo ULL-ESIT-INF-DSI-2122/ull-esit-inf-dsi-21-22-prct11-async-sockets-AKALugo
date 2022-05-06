@@ -1,7 +1,6 @@
 import 'mocha';
 import {expect} from 'chai';
 import {EventEmitter} from 'events';
-import {Servidor} from '../../src/modificacion/servidor';
 import {EventEmitterServidor} from '../../src/modificacion/emitterServidor';
 
 describe('EventEmitterServidor', () => {

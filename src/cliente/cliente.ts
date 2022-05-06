@@ -15,7 +15,7 @@ export class Cliente {
   constructor(private readonly puerto: number) {}
 
   /**
-   * Constructor
+   * Metodo que ejecuta al cliente.
    * @param peticion Peticion a realizar al servidor
    */
   run(peticion: RequestType) {
@@ -65,8 +65,6 @@ export class Cliente {
           }
           break;
       }
-
-      cliente.end();
     });
     cliente.write(JSON.stringify(peticion) + "\n", (err) => {
       if (err) {

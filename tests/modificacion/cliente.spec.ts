@@ -1,7 +1,6 @@
 import 'mocha';
 import {expect} from 'chai';
 import {EventEmitter} from 'events';
-import {Cliente} from '../../src/modificacion/cliente';
 import {EventEmitterCliente} from '../../src/modificacion/emitterCliente';
 
 describe('EventEmitterCliente', () => {

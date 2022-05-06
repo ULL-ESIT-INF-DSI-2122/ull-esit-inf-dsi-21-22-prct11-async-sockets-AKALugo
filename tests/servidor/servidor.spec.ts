@@ -1,7 +1,6 @@
 import 'mocha';
 import {expect} from 'chai';
 import {EventEmitter} from 'events';
-import {Servidor} from '../../src/servidor/servidor';
 import {EventEmitterServidor} from '../../src/servidor/eventEmitterServidor';
 
 describe('EventEmitterServidor', () => {
@@ -10,12 +9,12 @@ describe('EventEmitterServidor', () => {
       const auxEventEmitterServidor = new EventEmitterServidor(socket);
 
       auxEventEmitterServidor.on('peticion', (message) => {
-        expect(message).to.be.eql({'type': 'change', 'prev': 13, 'curr': 26});
+        expect(message).to.be.eql({'type': 'add', 'user': 'ale', 'title': 'Nota roja'});
         done();
       });
   
-      socket.emit('data', '{"type": "change", "prev": 13');
-      socket.emit('data', ', "curr": 26}');
-      socket.emit('data', '\n');
+      socket.emit('data', '{"type": "add", "user": ');
+      socket.emit('data', '"ale", "title": "Nota roja"');
+      socket.emit('data', '}\n');
     });
   });

@@ -1,6 +1,19 @@
 {
     "entryPoints": [
-        "./src/x/x.ts"
+        "./src/cliente/runCliente.ts",
+        "./src/cliente/eventEmitterCliente.ts",
+        "./src/cliente/cliente.ts",
+        "./src/modificacion/servidor.ts",
+        "./src/modificacion/emitterServidor.ts",
+        "./src/modificacion/emitterCliente.ts",
+        "./src/modificacion/cliente.ts",
+        "./src/notas/gestionNota.ts",
+        "./src/notas/jsonNota.ts",
+        "./src/notas/nota.ts",
+        "./src/servidor/eventEmitterServidor.ts",
+        "./src/servidor/servidor.ts",
+        "./src/servidor/runServidor.ts",
+        "./src/peticiones.ts"
     ],
     "out": "./typedoc"
 }
