@@ -48,7 +48,7 @@ export class Cliente {
           }
           break;
         case "list":
-          if (respuesta.notes) {
+          if (respuesta.notes && respuesta.notes.length !== 0) {
             respuesta.notes.forEach((nota) => {
               const notaObjeto = new Nota(nota.titulo, nota.cuerpo, nota.color);
               console.log(chalk.keyword(notaObjeto.getColor())(notaObjeto.getTitulo()));
@@ -58,10 +58,12 @@ export class Cliente {
           }
           break;
         case "read":
-          if (respuesta.notes) {
+          if (respuesta.notes && respuesta.notes.length !== 0) {
             const notaObjeto = new Nota(respuesta.notes[0].titulo, respuesta.notes[0].cuerpo, respuesta.notes[0].color);
             console.log(chalk.keyword(notaObjeto.getColor())(notaObjeto.getTitulo()));
             console.log(chalk.keyword(notaObjeto.getColor())(notaObjeto.getCuerpo()));
+          } else {
+            console.log(chalk.red("¡ERROR, hubo un problema con el nombre del usuario o el usuario no tiene esa nota!"));
           }
           break;
       }

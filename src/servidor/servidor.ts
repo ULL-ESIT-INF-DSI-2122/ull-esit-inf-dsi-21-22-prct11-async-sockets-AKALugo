@@ -2,6 +2,7 @@ import * as net from "net";
 import {ResponseType, RequestType} from "../peticiones";
 import {EventEmitterServidor} from "./eventEmitterServidor";
 import {GestionNota} from "../notas/gestionNota";
+import {Nota} from "../notas/nota";
 
 /**
  * @class Servidor
@@ -35,6 +36,7 @@ export class Servidor {
             if (peticion.title) {
               if (this.manejador.eliminarNota(peticion.user, peticion.title)) {
                 respuesta.success = true;
+                respuesta.notes = [new Nota(peticion.title, "", "blue")];
               } 
             }
             break;
@@ -42,6 +44,7 @@ export class Servidor {
             if (peticion.title && peticion.body && peticion.color) {
               if (this.manejador.modificarNota(peticion.user, peticion.title, peticion.body, peticion.color)) {
                 respuesta.success = true;
+                respuesta.notes = [new Nota(peticion.title, peticion.body, peticion.color)];
               } 
             }
             break;
