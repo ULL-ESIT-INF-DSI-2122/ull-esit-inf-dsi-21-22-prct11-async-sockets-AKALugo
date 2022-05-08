@@ -229,7 +229,8 @@ export type ModificacionClienteType = {
 ```
 
 El código de las clases event emitter es el siguiente:
--EventEmitterCliente:
+* EventEmitterCliente:
+
 ```typescript
 import {EventEmitter} from "events";
 import {ResponseType} from "../peticiones";
@@ -262,7 +263,8 @@ export class EventEmitterCliente extends EventEmitter {
 }
 ```
 
--EventEmitterServidor:
+* EventEmitterServidor:
+
 ```typescript
 import {EventEmitter} from "events";
 import {RequestType} from "../peticiones";
@@ -298,6 +300,7 @@ export class EventEmitterServidor extends EventEmitter {
 Llegados a este punto solo nos quedaría hablar de la implementación de la clase cliente y servidor. Empecemos por la clase servidor, lo primero que hacemos es poner al servidor a escuchar en un puerto, gracias al uso de sockets y luego cuando si eventEmitter emita el evento `petición` querrá decir que el cliente a enviado la informacion. Procedemos a procesarla con un switch y luego le enviamos la respuesta al cliente. El cliente se conecta al puerto donde está escuchando el servidor que previamente tiene que estar abierto y envía la información al servidor que haya recibido por parámetros, cuando su eventEmitter emita el evento `respuesta` querrá decir que el servidor le ha respondido y precesará la respuesta. Cuando el servidor responde al cliente lo desconecta del puerto para de esta forma acabar la interacción. Ese es el código del servidor y del cliente:
 
 * Servidor
+
 ```typescript
 import * as net from "net";
 import {ResponseType, RequestType} from "../peticiones";
@@ -376,6 +379,7 @@ export class Servidor {
 ```
 
 * Cliente
+
 ```typescript
 import * as net from "net";
 import {Nota} from "../notas/nota";
@@ -459,6 +463,7 @@ export class Cliente {
 Estas son las pruebas que he realizado, me he centrado en las clases EventEmitterCliente y EventEmitterServidor ya que al servidor y al cliente se nos dificulta esta tarea ta que tienen que conectarse a un puerto.
 
 * EventEmitterServidor
+
 ```typescript
 import 'mocha';
 import {expect} from 'chai';
@@ -483,6 +488,7 @@ describe('EventEmitterServidor', () => {
 ```
 
 * EventEmitterCliente
+
 ```typescript
 import 'mocha';
 import {expect} from 'chai';
