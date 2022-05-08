@@ -301,6 +301,7 @@ Llegados a este punto solo nos quedaría hablar de la implementación de la clas
 
 * Servidor
 
+
 ```typescript
 import * as net from "net";
 import {ResponseType, RequestType} from "../peticiones";
@@ -379,6 +380,7 @@ export class Servidor {
 ```
 
 * Cliente
+
 
 ```typescript
 import * as net from "net";
@@ -464,6 +466,7 @@ Estas son las pruebas que he realizado, me he centrado en las clases EventEmitte
 
 * EventEmitterServidor
 
+
 ```typescript
 import 'mocha';
 import {expect} from 'chai';
@@ -488,6 +491,7 @@ describe('EventEmitterServidor', () => {
 ```
 
 * EventEmitterCliente
+
 
 ```typescript
 import 'mocha';
